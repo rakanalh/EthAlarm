@@ -1,11 +1,8 @@
 pragma solidity ^0.4.9;
 
-import './DateTime.sol';
+import './DateTimeAPI.sol';
 
 contract EthAlarm {
-    address owner;
-    uint256 lostAmounts;
-
     struct Alarm {
         address sender;
         uint256 amount;
@@ -14,13 +11,15 @@ contract EthAlarm {
         uint8 minute;
     }
 
-    address dateTimeAddress = 0x0;
-
     event AlarmCreated(bytes32 alarmID);
     event AlarmCheckInSuccess(bytes32 alarmID);
     event AlarmCheckInFailure(bytes32 alarmID);
 
+    address owner;
+    uint256 lostAmounts;
+    address dateTimeAddress = 0x0;
     mapping(bytes32 => Alarm) alarms;
+    DateTimeAPI dateTimeAPI;
 
     modifier onlyOwner() {
         require(msg.sender == owner);
@@ -34,6 +33,11 @@ contract EthAlarm {
 
     function setDateTimeAPIAddress(address _dateTimeAPIAddress) public onlyOwner {
         dateTimeAddress = _dateTimeAPIAddress;
+        dateTimeAPI = DateTimeAPI(dateTimeAddress);
+    }
+
+    function getDateTimeAPIAddress() public view onlyOwner returns (address) {
+        return dateTimeAddress;
     }
 
     function getLostAmounts() public view onlyOwner returns (uint256) {
@@ -61,6 +65,9 @@ contract EthAlarm {
         (blockHour, blockMinute) = getBlockTime();
 
         Alarm memory alarm = alarms[_alarmID];
+
+        require(msg.sender != 0x0 && alarm.sender == msg.sender);
+
         int8 alarmHour = int8(blockHour) + alarm.timezone;
         uint8 rangeMinuteStart = blockMinute - 10;
         uint8 rangeMinuteEnd = blockMinute + 10;
@@ -84,7 +91,6 @@ contract EthAlarm {
     }
 
     function getBlockTime() private view returns (uint8, uint8) {
-        DateTimeAPI dateTimeAPI = DateTimeAPI(dateTimeAddress);
         uint8 hour = dateTimeAPI.getHour(now);
         uint8 minute = dateTimeAPI.getMinute(now);
         return (hour, minute);
