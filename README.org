@@ -2,3 +2,9 @@
 
 
 [[./images/logo.png]]
+
+
+** TODOs
+- [-] Deployment scripts
+- [-] TODO Use Web3js
+- [-] TODO UI integration
