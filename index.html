@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+     body {
+       padding-top: 5rem;
+       margin-bottom: 20px
+     }
+     .header {
+       text-align: center;
+     }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Ethereum Alarm</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="header">
+        <h1>Ethereum Alarm</h1>
+        <p class="lead">
+          <image src="images/logo.png" width="250px" />
+        </p>
+      </div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-md-6" style="display: flex; flex-direction: column; margin-bottom: 10px">
+            <div style="background-color: #343a40; color: #fff; padding: 5px;">
+              Create an alarm
+            </div>
+            <div style="border: 1px solid #343a40;">
+              <div class="input-group" style="width: 40%; margin: 20px auto">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">HH:MM</span>
+                  </div>
+                  <input type="number" max="23" min="0" class="form-control">
+                  <input type="number" max="59" min="0" class="form-control">
+                </div>
+
+              </div>
+              <div class="input-group" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-primary" style="margin:0px auto">Create Alarm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col col-md-6" style="display: flex; flex-direction: column; margin-bottom: 10px">
+            <div style="background-color: #343a40; color: #fff; padding: 5px;">
+              Check-In to an existing alarm
+            </div>
+            <div class="input-group" style="border: 1px solid #343a40; flex: 1">
+              <button type="button" class="btn btn-primary" style="margin: 30px auto">Check-In</button>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+     $(document).ready(function() {
+
+     });
+    </script>
+  </body>
+</html>
